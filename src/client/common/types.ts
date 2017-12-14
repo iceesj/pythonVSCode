@@ -30,6 +30,16 @@ export type ExecutionInfo = {
     product?: Product;
 };
 
+export interface IErrorHandler {
+    handleError(error: Error, resource: Uri, execInfo: ExecutionInfo): Promise<boolean>;
+}
+
+export const IErrorHandlerFactory = Symbol('IErrorHandlerFactory');
+
+export interface IErrorHandlerFactory {
+    create(product: Product): IErrorHandler;
+}
+
 export const ILogger = Symbol('ILogger');
 
 export interface ILogger {

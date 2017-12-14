@@ -1,7 +1,10 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+
 import { OutputChannel, Uri, window } from 'vscode';
-import { ExecutionInfo, IInstaller, ILogger, Product } from '../../common/types';
-import { IServiceContainer } from '../../ioc/types';
-import { ILinterHelper, LinterId } from '../types';
+import { ExecutionInfo, IInstaller, ILogger, Product } from '../../../common/types';
+import { IServiceContainer } from '../../../ioc/types';
+import { ILinterHelper, LinterId } from '../../../linters/types';
 import { BaseErrorHandler } from './baseErrorHandler';
 
 export class StandardErrorHandler extends BaseErrorHandler {

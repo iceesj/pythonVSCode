@@ -3,6 +3,7 @@
 
 import 'reflect-metadata';
 import { IServiceManager } from '../ioc/types';
+import { ErrorHandlerFactory } from './errors/handlers/factory';
 import { CondaInstaller } from './installer/condaInstaller';
 import { Installer } from './installer/installer';
 import { PipInstaller } from './installer/pipInstaller';
@@ -15,7 +16,7 @@ import { RegistryImplementation } from './platform/registry';
 import { IRegistry } from './platform/types';
 import { TerminalService } from './terminal/service';
 import { ITerminalService } from './terminal/types';
-import { IInstaller, ILogger, IPathUtils, IPersistentStateFactory, Is64Bit, IsWindows } from './types';
+import { IErrorHandlerFactory, IInstaller, ILogger, IPathUtils, IPersistentStateFactory, Is64Bit, IsWindows } from './types';
 
 export function registerTypes(serviceManager: IServiceManager) {
     serviceManager.addSingletonInstance<boolean>(IsWindows, IS_WINDOWS);
@@ -28,6 +29,7 @@ export function registerTypes(serviceManager: IServiceManager) {
     serviceManager.addSingleton<ILogger>(ILogger, Logger);
     serviceManager.addSingleton<ITerminalService>(ITerminalService, TerminalService);
     serviceManager.addSingleton<IPathUtils>(IPathUtils, PathUtils);
+    serviceManager.addSingleton<IErrorHandlerFactory>(IErrorHandlerFactory, ErrorHandlerFactory);
 
     if (IS_WINDOWS) {
         serviceManager.addSingleton<IRegistry>(IRegistry, RegistryImplementation);

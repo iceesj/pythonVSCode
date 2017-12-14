@@ -1,13 +1,12 @@
 import * as path from 'path';
-import { CancellationToken, OutputChannel, TextDocument, Uri } from 'vscode';
 import * as vscode from 'vscode';
+import { CancellationToken, OutputChannel, TextDocument, Uri } from 'vscode';
 import { IPythonSettings, PythonSettings } from '../common/configSettings';
 import '../common/extensions';
 import { ExecutionResult, IProcessService, IPythonExecutionFactory } from '../common/process/types';
-import { ExecutionInfo, IInstaller, ILogger, Product } from '../common/types';
+import { ExecutionInfo, IErrorHandler, IErrorHandlerFactory, IInstaller, ILogger, Product } from '../common/types';
 import { IEnvironmentVariablesProvider } from '../common/variables/types';
 import { IServiceContainer } from '../ioc/types';
-import { ErrorHandler } from './errorHandlers/main';
 import { ILinterHelper, LinterId } from './types';
 // tslint:disable-next-line:no-require-imports no-var-requires
 const namedRegexp = require('named-js-regexp');
@@ -49,7 +48,7 @@ export function matchNamedRegEx(data, regex): IRegexGroup | undefined {
 }
 export abstract class BaseLinter {
     public Id: LinterId;
-    private errorHandler: ErrorHandler;
+    private errorHandler: IErrorHandler;
     private _pythonSettings: IPythonSettings;
     protected get pythonSettings(): IPythonSettings {
         return this._pythonSettings;
@@ -59,7 +58,7 @@ export abstract class BaseLinter {
         protected helper: ILinterHelper, protected logger: ILogger, protected serviceContainer: IServiceContainer,
         protected readonly columnOffset = 0) {
         this.Id = this.helper.translateToId(product);
-        this.errorHandler = new ErrorHandler(product, installer, helper, logger, outputChannel, serviceContainer);
+        this.errorHandler = serviceContainer.get<IErrorHandlerFactory>(IErrorHandlerFactory).create(product);
     }
     public isEnabled(resource: Uri) {
         this._pythonSettings = PythonSettings.getInstance(resource);

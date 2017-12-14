@@ -2,9 +2,9 @@
 // Licensed under the MIT License.
 
 import { OutputChannel, Uri } from 'vscode';
-import { ExecutionInfo, IInstaller, ILogger, Product } from '../../common/types';
-import { IServiceContainer } from '../../ioc/types';
-import { IErrorHandler, ILinterHelper } from '../types';
+import { ExecutionInfo, IErrorHandler, IInstaller, ILogger, Product } from '../../../common/types';
+import { IServiceContainer } from '../../../ioc/types';
+import { ILinterHelper } from '../../../linters/types';
 
 export abstract class BaseErrorHandler implements IErrorHandler {
     private handler: IErrorHandler;

@@ -1,9 +1,12 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+
 import { OutputChannel, Uri } from 'vscode';
-import { isNotInstalledError } from '../../common/helpers';
-import { IPythonExecutionFactory } from '../../common/process/types';
-import { ExecutionInfo, IInstaller, ILogger, Product } from '../../common/types';
-import { IServiceContainer } from '../../ioc/types';
-import { ILinterHelper } from '../types';
+import { isNotInstalledError } from '../../../common/helpers';
+import { IPythonExecutionFactory } from '../../../common/process/types';
+import { ExecutionInfo, IInstaller, ILogger, Product } from '../../../common/types';
+import { IServiceContainer } from '../../../ioc/types';
+import { ILinterHelper } from '../../../linters/types';
 import { BaseErrorHandler } from './baseErrorHandler';
 
 export class ModuleNotInstalledErrorHandler extends BaseErrorHandler {

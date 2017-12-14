@@ -5,10 +5,6 @@ import { Uri } from 'vscode';
 import { ILintingSettings } from '../common/configSettings';
 import { ExecutionInfo, Product } from '../common/types';
 
-export interface IErrorHandler {
-    handleError(error: Error, resource: Uri, execInfo: ExecutionInfo): Promise<boolean>;
-}
-
 export const ILinterHelper = Symbol('ILinterHelper');
 
 export type LinterId = 'flake8' | 'mypy' | 'pep8' | 'prospector' | 'pydocstyle' | 'pylama' | 'pylint';
