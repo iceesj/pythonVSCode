@@ -1540,8 +1540,8 @@
 		"typescript-char": "^0.0.0",
 		"uint64be": "^1.0.1",
 		"untildify": "^3.0.2",
-		"vscode-debugadapter": "^1.0.1",
-		"vscode-debugprotocol": "^1.0.1",
+		"vscode-debugadapter": "^1.25.0",
+		"vscode-debugprotocol": "^1.25.0",
 		"vscode-extension-telemetry": "^0.0.5",
 		"vscode-languageclient": "^3.1.0",
 		"vscode-languageserver": "^3.1.0",
@@ -1585,5 +1585,10 @@
 		"typescript-formatter": "^6.0.0",
 		"vscode": "^1.1.5",
 		"vscode-debugadapter-testsupport": "^1.25.0"
+	},
+	"__metadata": {
+		"id": "f1f59ae4-9318-4f3c-a9b5-81b2eaa5f8a5",
+		"publisherDisplayName": "Microsoft",
+		"publisherId": "998b010b-e2af-44a5-a6cd-0b5fd3b9b6f8"
 	}
 }
